@@ -1,13 +1,21 @@
+type TPlatformTypes = 'Web' | 'Mobile';
+
 type TProject = {
+	id: string;
 	name: string;
 	description: string;
 	contributions: string;
 	url?: string;
+	role?: string;
+	platForms: TPlatformTypes[];
 };
 
 export const projects: TProject[] = [
 	{
+		id: 'outstaffer',
+		platForms: ['Web'],
 		name: 'Outstaffer GWP',
+		role: 'Senior Front-end developer',
 		url: 'https://www.google.com/',
 		description:
 			'With Outstaffer, the process of hiring and managing global talent becomes remarkably straightforward. From recruitment to onboarding, compliance to payments, we handle every aspect of global HR, allowing companies to focus on their core objectives while we take care of the rest.',
@@ -15,6 +23,8 @@ export const projects: TProject[] = [
 			'As a senior front-end developer at Outstaffer, my role revolves around enhancing the user experience and functionality of our global platform product. From UI conversions to API integrations, I collaborate closely with the backend team to ensure seamless communication and integration between frontend and backend systems. Leveraging React for the frontend and Node.js for the backend, I work tirelessly to adapt and evolve our platform as it grows in size and complexity.'
 	},
 	{
+		id: 'reitscreener',
+		platForms: ['Web', 'Mobile'],
 		name: 'Reitscreener',
 		url: 'https://www.google.com/',
 		description:
@@ -23,6 +33,8 @@ export const projects: TProject[] = [
 			"As one of the front-end engineers behind REITScreener, my focus has been on the visual transformation of the user interface while maintaining the integrity of the platform for our pro-members. This involved crafting a seamless UI conversion that ensures a smooth transition for users, all while upholding the functionality and familiarity that our pro-members value. By meticulously refining every aspect of the front-end experience, I've contributed to enhancing the usability and accessibility of REITScreener, empowering investors to navigate the complex world of REIT investing with confidence."
 	},
 	{
+		id: 'insite-logic',
+		platForms: ['Web'],
 		name: 'Insite Logic',
 		url: 'https://www.google.com/',
 		description:
@@ -31,6 +43,8 @@ export const projects: TProject[] = [
 			'In this project, I spearheaded the front-end development using React, collaborating closely with a backend developer responsible for crafting robust API services. Together, we orchestrated a seamless integration of data and design, breathing life into the intricate analytics and dynamic user interface that define InSite Logic.'
 	},
 	{
+		id: 'identifi',
+		platForms: ['Web', 'Mobile'],
 		name: 'Identifi',
 		url: 'https://www.google.com/',
 		description:

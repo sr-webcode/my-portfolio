@@ -1,5 +1,5 @@
-import { Heading, VStack } from '@chakra-ui/react';
-import { createBrowserRouter, Outlet, useLocation } from 'react-router-dom';
+import { VStack } from '@chakra-ui/react';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Home from '@pages/Home';
 import Projects from '@/pages/Projects';
@@ -11,6 +11,7 @@ import Navigation from '@components/Navigation';
 export const PAGE_URLS = {
 	HOME: '/',
 	PROJECTS: '/projects',
+	PROJECT_DETAIL: (id: string) => `/projects/${id}`,
 	CONTACT: '/contact'
 };
 

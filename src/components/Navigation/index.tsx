@@ -15,15 +15,15 @@ const Navigation = () => {
 			<Button variant="text" padding={0} as={Link} to="/">
 				{'<sean.rojas />'}
 			</Button>
-			<HStack>
+			<HStack spacing={0}>
+				<Button as={Link} to={PAGE_URLS.HOME} variant="ghost">
+					Home
+				</Button>
 				<Button as={Link} to={PAGE_URLS.PROJECTS} variant="ghost">
 					Projects
 				</Button>
 				<Button as={Link} to={PAGE_URLS.CONTACT} variant="ghost">
 					Contact
-				</Button>
-				<Button as={Link} to={'/works'} variant="ghost">
-					Resume
 				</Button>
 			</HStack>
 		</HStack>

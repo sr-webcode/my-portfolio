@@ -7,10 +7,11 @@ import {
 	HStack,
 	Box,
 	Image,
-	Button,
-	FlexProps
+	Button
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
+import { PAGE_URLS } from '@/routes';
 import { projects } from '@/constants';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
@@ -18,16 +19,21 @@ const Projects = () => {
 	return (
 		<VStack width="100%" alignItems="flex-start" spacing={7}>
 			<Heading size="lg">Projects</Heading>
-			{projects.map(({ name, description, url }, idx) => {
+			{projects.map(({ id, name, description, url }, idx) => {
+				const cardVariant = idx % 2 !== 0 ? 'filled' : 'outline';
+				const projectURL = PAGE_URLS.PROJECT_DETAIL(id);
+
 				return (
-					<Card key={name} variant="filled" size="lg" width="100%" h="100%">
+					<Card h="100%" size="lg" key={id} width="100%" variant={cardVariant}>
 						<CardBody>
 							<HStack spacing={7} alignItems="flex-start">
 								<VStack alignItems="flex-start" spacing={4}>
 									<Heading size="md">{name}</Heading>
 									<Text>{description}</Text>
 									<HStack>
-										<Button>View Details</Button>
+										<Button as={Link} to={projectURL}>
+											View Details
+										</Button>
 										<Button
 											as="a"
 											href={url}

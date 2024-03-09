@@ -24,8 +24,9 @@
 		"baseUrl": "./src",
 		"paths": {
 			"@/*": ["*"],
-			"@components/*": ["components/*"],
-			"@pages/*": ["pages/*"]
+			"@pages/*": ["pages/*"],
+			"@assets/*": ["assets/*"],
+			"@components/*": ["components/*"]
 		}
 	},
 	"include": ["src"],

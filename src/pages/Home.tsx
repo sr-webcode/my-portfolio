@@ -7,6 +7,7 @@ import {
 	VStack,
 	HStack
 } from '@chakra-ui/react';
+import resumePdfLink from '@assets/docs/resume.pdf';
 
 import myProfileAvatar from '../assets/profilePicture.png';
 import { PAGE_URLS } from '../routes';
@@ -30,6 +31,9 @@ const Home = () => {
 			<HStack>
 				<Button onClick={() => navigate(PAGE_URLS.PROJECTS)}>
 					View Projects
+				</Button>
+				<Button as={'a'} variant="outline" href={resumePdfLink} target="_blank">
+					Download CV
 				</Button>
 			</HStack>
 		</VStack>
