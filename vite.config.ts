@@ -6,5 +6,12 @@ export default defineConfig({
 	plugins: [react()],
 	server: {
 		port: 5050
+	},
+	resolve: {
+		alias: {
+			'@': '/src',
+			'@components': '/src/components',
+			'@pages': '/src/pages'
+		}
 	}
 });

@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+
+import { PAGE_URLS } from '../../routes';
 import { Button, HStack } from '@chakra-ui/react';
 
 const Navigation = () => {
@@ -10,14 +12,14 @@ const Navigation = () => {
 				justifyContent: 'space-between'
 			}}
 		>
-			<Button variant="text" fontSize="large" padding={0} as={Link} to="/">
-				{'<sr.webcode/>'}
+			<Button variant="text" padding={0} as={Link} to="/">
+				{'<sean.rojas />'}
 			</Button>
 			<HStack>
-				<Button as={Link} to={'/works'} variant="ghost">
-					Works
+				<Button as={Link} to={PAGE_URLS.PROJECTS} variant="ghost">
+					Projects
 				</Button>
-				<Button as={Link} to={'/contact'} variant="ghost">
+				<Button as={Link} to={PAGE_URLS.CONTACT} variant="ghost">
 					Contact
 				</Button>
 				<Button as={Link} to={'/works'} variant="ghost">

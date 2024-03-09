@@ -1,20 +1,29 @@
-import { VStack } from '@chakra-ui/react';
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import { Heading, VStack } from '@chakra-ui/react';
+import { createBrowserRouter, Outlet, useLocation } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Works from './pages/Works';
-import ErrorPage from './pages/ErrorPage';
-import AppLayout from './components/Layout';
-import Navigation from './components/Navigation';
+import Home from '@pages/Home';
+import Projects from '@/pages/Projects';
+import ProjectDetail from '@/pages/ProjectDetail';
+import ErrorPage from '@pages/ErrorPage';
+import AppLayout from '@components/Layout';
+import Navigation from '@components/Navigation';
 
-const RootElement = () => (
-	<AppLayout>
-		<VStack spacing={24} sx={{ py: 8, alignItems: 'flex-start' }}>
-			<Navigation />
-			<Outlet />
-		</VStack>
-	</AppLayout>
-);
+export const PAGE_URLS = {
+	HOME: '/',
+	PROJECTS: '/projects',
+	CONTACT: '/contact'
+};
+
+const RootElement = () => {
+	return (
+		<AppLayout>
+			<VStack spacing={24} sx={{ pt: 4, pb: 8, alignItems: 'flex-start' }}>
+				<Navigation />
+				<Outlet />
+			</VStack>
+		</AppLayout>
+	);
+};
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -26,8 +35,16 @@ const router = createBrowserRouter([
 				index: true
 			},
 			{
-				path: 'works',
-				element: <Works />
+				path: 'projects',
+				element: <Projects />
+			},
+			{
+				path: 'projects/:id',
+				element: <ProjectDetail />
+			},
+			{
+				path: 'contact',
+				element: <div />
 			}
 		]
 	}

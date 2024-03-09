@@ -1,8 +1,18 @@
-import { Avatar, Button, Heading, VStack, Text } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import {
+	Text,
+	Avatar,
+	Button,
+	Heading,
+	VStack,
+	HStack
+} from '@chakra-ui/react';
 
 import myProfileAvatar from '../assets/profilePicture.png';
+import { PAGE_URLS } from '../routes';
 
 const Home = () => {
+	const navigate = useNavigate();
 	return (
 		<VStack width="full" spacing={6}>
 			<VStack>
@@ -17,9 +27,11 @@ const Home = () => {
 				a front-end developer based in the Philippines, Passionate about
 				Building User-Centric Experiences.
 			</Text>
-			<Button rounded={24} size="lg" p={7} fontSize={16}>
-				Connect with me
-			</Button>
+			<HStack>
+				<Button onClick={() => navigate(PAGE_URLS.PROJECTS)}>
+					View Projects
+				</Button>
+			</HStack>
 		</VStack>
 	);
 };
