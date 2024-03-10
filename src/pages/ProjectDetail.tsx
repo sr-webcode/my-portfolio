@@ -1,20 +1,10 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
-import {
-	Box,
-	Button,
-	Center,
-	HStack,
-	Heading,
-	Image,
-	Stack,
-	Text,
-	Wrap,
-	WrapItem
-} from '@chakra-ui/react';
+import { Button, Heading, Stack, Text } from '@chakra-ui/react';
 
 import { PAGE_URLS } from '@/routes';
-import { projects } from '@/constants';
+import { projects } from '@/projectData';
 import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons';
+import Carousel from '@/components/common/Carousel';
 
 interface IProjectDetailItems {
 	title: string;
@@ -32,36 +22,31 @@ const ProjectDetail = () => {
 	const { id: paramId } = useParams<{ id: string }>();
 	const project = projects.find(({ id }) => id === paramId);
 	if (!project) return <Navigate to="/404" />;
-
-	const { name, platForms, role, contributions, url } = project;
+	const { id, name, platForms, role, contributions, url, assets } = project;
 
 	return (
-		<Stack width="full" spacing={7} alignItems="flex-start">
+		<Stack key={id} width="full" spacing={7} alignItems="flex-start">
 			<Heading size="lg">{name}</Heading>
-			<HStack alignItems="flex-start" justifyContent="space-between">
-				<Stack spacing={6} alignItems="flex-start" width="60%">
-					<ProjectDetailItems title="Platform" content={platForms.toString()} />
-					<ProjectDetailItems
-						title="Role"
-						content={role ?? 'Front-end Developer'}
-					/>
-					<ProjectDetailItems
-						title="Project contributions"
-						content={contributions}
-					/>
-					<Button
-						as="a"
-						href={url}
-						variant="outline"
-						rightIcon={<ExternalLinkIcon />}
-					>
-						View Site
-					</Button>
-				</Stack>
-				<Box width="100%" maxWidth={320}>
-					<Image alt={name} fallbackSrc="https://via.placeholder.com/400" />
-				</Box>
-			</HStack>
+			<Stack spacing={6} alignItems="flex-start">
+				<Carousel height={460} imageSources={assets?.screenshots ?? []} />
+				<ProjectDetailItems title="Platform" content={platForms.toString()} />
+				<ProjectDetailItems
+					title="Role"
+					content={role ?? 'Front-end Developer'}
+				/>
+				<ProjectDetailItems
+					title="Project contributions"
+					content={contributions}
+				/>
+				<Button
+					as="a"
+					href={url}
+					variant="outline"
+					rightIcon={<ExternalLinkIcon />}
+				>
+					View Site
+				</Button>
+			</Stack>
 			<Button
 				mt={6}
 				as={Link}

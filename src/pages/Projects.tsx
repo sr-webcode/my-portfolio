@@ -6,20 +6,20 @@ import {
 	CardBody,
 	HStack,
 	Box,
-	Image,
 	Button
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 import { PAGE_URLS } from '@/routes';
-import { projects } from '@/constants';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { projects } from '@/projectData';
+import Image from '@/components/common/Image';
 
 const Projects = () => {
 	return (
 		<VStack width="100%" alignItems="flex-start" spacing={7}>
 			<Heading size="lg">Projects</Heading>
-			{projects.map(({ id, name, description, url }, idx) => {
+			{projects.map(({ id, name, description, url, assets }, idx) => {
 				const cardVariant = idx % 2 !== 0 ? 'filled' : 'outline';
 				const projectURL = PAGE_URLS.PROJECT_DETAIL(id);
 
@@ -44,12 +44,8 @@ const Projects = () => {
 										</Button>
 									</HStack>
 								</VStack>
-								<Box width="100%" maxWidth={200}>
-									<Image
-										alt={name}
-										rounded={7}
-										fallbackSrc="https://via.placeholder.com/200"
-									/>
+								<Box minWidth={200} boxShadow="lg" height={200}>
+									<Image rounded={8} alt={name} imageSize={200} src={assets?.main} />
 								</Box>
 							</HStack>
 						</CardBody>

@@ -14,6 +14,8 @@ import { PAGE_URLS } from '../routes';
 
 const Home = () => {
 	const navigate = useNavigate();
+	const handleDownloadResume = () => window.open(resumePdfLink, '_blank');
+	
 	return (
 		<VStack width="full" spacing={6}>
 			<VStack>
@@ -32,7 +34,7 @@ const Home = () => {
 				<Button onClick={() => navigate(PAGE_URLS.PROJECTS)}>
 					View Projects
 				</Button>
-				<Button as={'a'} variant="outline" href={resumePdfLink} target="_blank">
+				<Button variant="outline" onClick={handleDownloadResume}>
 					Download CV
 				</Button>
 			</HStack>

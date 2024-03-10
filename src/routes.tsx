@@ -1,5 +1,9 @@
 import { VStack } from '@chakra-ui/react';
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import {
+	createBrowserRouter,
+	Outlet,
+	ScrollRestoration
+} from 'react-router-dom';
 
 import Home from '@pages/Home';
 import Projects from '@/pages/Projects';
@@ -21,6 +25,7 @@ const RootElement = () => {
 			<VStack spacing={24} sx={{ pt: 4, pb: 8, alignItems: 'flex-start' }}>
 				<Navigation />
 				<Outlet />
+				<ScrollRestoration />
 			</VStack>
 		</AppLayout>
 	);
