@@ -41,7 +41,7 @@ export const projects: TProject[] = [
 		platForms: ['Web'],
 		name: 'Outstaffer GWP',
 		role: 'Senior Front-end developer',
-		url: 'https://www.google.com/',
+		url: 'https://employ.outstaffer.com/',
 		assets: {
 			main: Main_Outstaffer,
 			screenshots: [Screen_Outstaffer1, Screen_Outstaffer2, Screen_Outstaffer3]
@@ -55,7 +55,7 @@ export const projects: TProject[] = [
 		id: 'reitscreener',
 		platForms: ['Web', 'Mobile'],
 		name: 'Reitscreener',
-		url: 'https://www.google.com/',
+		url: 'https://reitscreener.com/',
 		assets: {
 			main: Main_Reitscreener,
 			screenshots: [
@@ -73,7 +73,7 @@ export const projects: TProject[] = [
 		id: 'insite-logic',
 		platForms: ['Web'],
 		name: 'Insite Logic',
-		url: 'https://www.google.com/',
+		url: 'https://app.insitelogic.com.au/',
 		assets: {
 			main: Main_InsiteLogic,
 			screenshots: [
@@ -91,7 +91,7 @@ export const projects: TProject[] = [
 		id: 'identifi',
 		platForms: ['Web', 'Mobile'],
 		name: 'Identifi',
-		url: 'https://www.google.com/',
+		url: 'https://www.identifi.com/',
 		assets: {
 			main: Main_Identifi,
 			screenshots: [Screen_Identifi1, Screen_Identifi2, Screen_Identifi3]

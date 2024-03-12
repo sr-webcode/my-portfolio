@@ -1,12 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import {
-	Text,
-	Avatar,
-	Button,
-	Heading,
-	VStack,
-	HStack
-} from '@chakra-ui/react';
+import { Text, Avatar, Button, Heading, VStack, Stack } from '@chakra-ui/react';
 import resumePdfLink from '@assets/docs/resume.pdf';
 
 import myProfileAvatar from '../assets/profilePicture.png';
@@ -15,7 +8,7 @@ import { PAGE_URLS } from '../routes';
 const Home = () => {
 	const navigate = useNavigate();
 	const handleDownloadResume = () => window.open(resumePdfLink, '_blank');
-	
+
 	return (
 		<VStack width="full" spacing={6}>
 			<VStack>
@@ -30,14 +23,14 @@ const Home = () => {
 				a front-end developer based in the Philippines, Passionate about
 				Building User-Centric Experiences.
 			</Text>
-			<HStack>
-				<Button onClick={() => navigate(PAGE_URLS.PROJECTS)}>
+			<Stack direction={'row'}>
+				<Button onClick={() => navigate(PAGE_URLS.PROJECTS.path)}>
 					View Projects
 				</Button>
 				<Button variant="outline" onClick={handleDownloadResume}>
 					Download CV
 				</Button>
-			</HStack>
+			</Stack>
 		</VStack>
 	);
 };

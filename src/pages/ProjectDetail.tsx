@@ -51,7 +51,7 @@ const ProjectDetail = () => {
 				mt={6}
 				as={Link}
 				variant="link"
-				to={PAGE_URLS.PROJECTS}
+				to={PAGE_URLS.PROJECTS.path}
 				leftIcon={<ArrowBackIcon />}
 			>
 				Back to projects
