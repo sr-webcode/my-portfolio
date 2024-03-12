@@ -1,6 +1,5 @@
 import {
 	Box,
-	Center,
 	HStack,
 	Heading,
 	Stack,

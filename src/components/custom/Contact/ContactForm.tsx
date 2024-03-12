@@ -7,9 +7,7 @@ import {
 	Card,
 	Stack,
 	Textarea,
-	Button,
-	LinkOverlay,
-	LinkBox
+	Button
 } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
 
@@ -36,15 +34,6 @@ const ContactForm: React.FC = () => {
 		}
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
-	};
-
-	const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		const isValid = validate();
-		if (isValid) {
-			// Handle form submission
-			// console.log('Form submitted:', formData);
-		}
 	};
 
 	const handleChange = (
