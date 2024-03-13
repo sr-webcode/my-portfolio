@@ -37,7 +37,7 @@ const Contact = () => {
 				>
 					<Text>
 						Looking to connect and start a conversation? Simply fill out the
-						form, and let's kickstart our journey together. Whether it's about
+						form and let's kickstart our journey together. Whether it's about
 						collaboration, projects, or just a friendly chat, I'm here and eager
 						to hear from you!
 					</Text>

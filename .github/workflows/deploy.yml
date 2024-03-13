@@ -1,41 +1,41 @@
-# name: Deploy to Netlify
+name: Deploy to Netlify
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
 
-# jobs:
-#   deploy:
-#     name: 'Deploy to Netlify'
-#     needs: test
-#     runs-on: ubuntu-latest
-#     if: github.ref == 'refs/heads/main'
+jobs:
+  deploy:
+    name: 'Deploy to Netlify'
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: 20
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
 
-#       - name: Install dependencies
-#         run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
-#       - name: Build files
-#         run: yarn build
+      - name: Build files
+        run: yarn build
 
-#       - name: Deploy to Netlify
-#         uses: nwtgck/actions-netlify@v1.2
-#         with:
-#           publish-dir: './dist'
-#           production-branch: main
-#           deploy-message: 'Deployed Site 🚀'
-#           netlify-config-path: './netlify.toml'
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './dist'
+          production-branch: main
+          deploy-message: 'Deployed Site 🚀'
+          netlify-config-path: './netlify.toml'
 
-#         env:
-#           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-#           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-#         timeout-minutes: 1
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1

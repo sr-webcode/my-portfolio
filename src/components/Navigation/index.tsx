@@ -56,7 +56,7 @@ const Navigation = () => {
 			}}
 		>
 			<Button variant="text" padding={0} as={NavLink} to="/">
-				{'<sean.rojas />'}
+				{'<Sean.Rojas />'}
 			</Button>
 			<MobileMenu />
 			<HStack spacing={0} display={{ base: 'none', md: 'block' }}>
