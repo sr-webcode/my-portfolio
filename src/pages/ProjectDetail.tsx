@@ -30,6 +30,8 @@ const ProjectDetailItems = ({ title, content }: IProjectDetailItems) => (
 const ProjectDetail = () => {
 	const { id: paramId } = useParams<{ id: string }>();
 	const project = projects.find(({ id }) => id === paramId);
+	const showFullScreen = useBreakpointValue({ base: false, md: true });
+
 	if (!project) return <Navigate to="/404" />;
 
 	const { id, name, platForms, role, contributions, url, assets } = project;
@@ -38,8 +40,6 @@ const ProjectDetail = () => {
 			original: item,
 			thumbnail: item
 		})) ?? [];
-
-	const showFullScreen = useBreakpointValue({ base: false, md: true });
 
 	return (
 		<Stack key={id} width="full" spacing={7} alignItems="flex-start">

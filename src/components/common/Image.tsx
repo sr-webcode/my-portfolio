@@ -1,5 +1,4 @@
 import {
-	Box,
 	Skeleton,
 	Image as ChakraImage,
 	ImageProps as ChakraImageProps,
