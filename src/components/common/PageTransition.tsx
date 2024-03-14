@@ -5,9 +5,9 @@ const PageTransition = ({ children }: PropsWithChildren) => {
 	return (
 		<motion.div
 			style={{ width: '100%' }}
-			initial={{ translateY: '200px', opacity: 0 }}
+			initial={{ translateY: '20px', opacity: 0 }}
 			animate={{ translateY: 0, opacity: 1 }}
-			exit={{ opacity: 0, translateY: '200px' }}
+			exit={{ opacity: 0, translateY: '20px' }}
 			transition={{
 				ease: 'easeInOut',
 				opacity: { duration: 0.2 },
