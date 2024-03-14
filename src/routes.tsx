@@ -1,14 +1,16 @@
 import { Box, Center, Spinner, VStack } from '@chakra-ui/react';
 import {
 	createBrowserRouter,
-	Outlet,
-	ScrollRestoration
+	ScrollRestoration,
+	useLocation,
+	useOutlet
 } from 'react-router-dom';
 
 import ErrorPage from '@pages/ErrorPage';
 import AppLayout from '@components/Layout';
 import Navigation from '@components/Navigation';
-import { lazy, Suspense } from 'react';
+import { cloneElement, lazy, Suspense } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 const Home = lazy(() => import('@pages/Home'));
 const Contact = lazy(() => import('@pages/Contact'));
@@ -30,13 +32,18 @@ export const PAGE_URLS: TRouteDetails = {
 };
 
 const RootElement = () => {
+	// NOTE: fix for end animation not working on react router v6
+	const element = useOutlet();
+	const { pathname } = useLocation();
 	return (
 		<AppLayout>
 			<VStack spacing={24} sx={{ pt: 4, pb: 8, alignItems: 'flex-start' }}>
 				<Navigation />
-				<Outlet />
-				<ScrollRestoration />
+				<AnimatePresence mode="wait">
+					{element && cloneElement(element, { key: pathname })}
+				</AnimatePresence>
 			</VStack>
+			<ScrollRestoration />
 		</AppLayout>
 	);
 };

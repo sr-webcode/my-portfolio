@@ -1,18 +1,14 @@
 import { PAGE_URLS } from '@/routes';
-import { Button, Center, VStack } from '@chakra-ui/react';
-import { useNavigate, useRouteError } from 'react-router-dom';
+import { Button, Center, Heading, VStack } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const ErrorPage = () => {
-	const error: any = useRouteError();
 	const nav = useNavigate();
 	return (
-		<Center width="100%" height="100vh">
-			<VStack>
-				<h1>Oops!</h1>
+		<Center width="100%">
+			<VStack spacing={8}>
+				<Heading variant={'h1'}>404: Page not found</Heading>
 				<p>Sorry, an unexpected error has occurred.</p>
-				<p>
-					<i>{error?.statusText || error?.message}</i>
-				</p>
 				<Button onClick={() => nav(PAGE_URLS.HOME.path)}>Back to Home</Button>
 			</VStack>
 		</Center>
