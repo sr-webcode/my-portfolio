@@ -50,15 +50,12 @@ const Projects = () => {
 								</VStack>
 								<Box
 									boxShadow="lg"
-									minWidth={{ base: 0, md: 200 }}
+									width={'100%'}
+									maxWidth={{ md: 200 }}
+									minWidth={{ md: 200 }}
 									height={{ base: 'auto', md: 200 }}
 								>
-									<Image
-										rounded={8}
-										alt={name}
-										imageSize={200}
-										src={assets?.main}
-									/>
+									<Image alt={name} rounded={8} src={assets?.main} />
 								</Box>
 							</Stack>
 						</CardBody>

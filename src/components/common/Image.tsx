@@ -1,20 +1,24 @@
 import {
+	Box,
+	Skeleton,
 	Image as ChakraImage,
-	ImageProps as ChakraImageProps
+	ImageProps as ChakraImageProps,
+	SkeletonProps
 } from '@chakra-ui/react';
+22;
 
 interface ImageProps extends ChakraImageProps {
-	imageSize?: number;
+	skeletonProps?: SkeletonProps;
 }
 
-const Image = ({ imageSize = 200, ...rest }: ImageProps) => {
+const Image = ({ skeletonProps, ...props }: ImageProps) => {
 	return (
 		<ChakraImage
 			width="100%"
 			height="100%"
 			objectFit="cover"
-			fallbackSrc={`https://via.placeholder.com/${imageSize}`}
-			{...rest}
+			fallback={<Skeleton width={200} height={200} {...skeletonProps} />}
+			{...props}
 		/>
 	);
 };

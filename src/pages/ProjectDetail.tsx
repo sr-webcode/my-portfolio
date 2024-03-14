@@ -1,10 +1,19 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { Button, Heading, Stack, Text } from '@chakra-ui/react';
+import {
+	Box,
+	Button,
+	Heading,
+	Stack,
+	Text,
+	useBreakpointValue
+} from '@chakra-ui/react';
 
 import { PAGE_URLS } from '@/routes';
 import { projects } from '@/projectData';
 import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons';
-import Carousel from '@/components/common/Carousel';
+import ImageGallery from '@/components/common/ImageGallery';
+import { ReactImageGalleryItem } from 'react-image-gallery';
+import Image from '@/components/common/Image';
 
 interface IProjectDetailItems {
 	title: string;
@@ -22,13 +31,49 @@ const ProjectDetail = () => {
 	const { id: paramId } = useParams<{ id: string }>();
 	const project = projects.find(({ id }) => id === paramId);
 	if (!project) return <Navigate to="/404" />;
+
 	const { id, name, platForms, role, contributions, url, assets } = project;
+	const images: ReactImageGalleryItem[] =
+		assets?.screenshots.map((item) => ({
+			original: item,
+			thumbnail: item
+		})) ?? [];
+
+	const showFullScreen = useBreakpointValue({ base: false, md: true });
 
 	return (
 		<Stack key={id} width="full" spacing={7} alignItems="flex-start">
 			<Heading size="lg">{name}</Heading>
 			<Stack spacing={6} alignItems="flex-start">
-				<Carousel height={460} imageSources={assets?.screenshots ?? []} />
+				<ImageGallery
+					showIndex
+					items={images}
+					useBrowserFullscreen={false}
+					showFullscreenButton={showFullScreen}
+					renderItem={({ original }) => (
+						<Box width={'100%'} maxHeight={460} overflow={'hidden'}>
+							<Image
+								src={original}
+								skeletonProps={{
+									width: '100%',
+									height: { base: 260, md: '100vh' }
+								}}
+							/>
+						</Box>
+					)}
+					renderThumbInner={({ thumbnail }) => (
+						<Box width={'100%'}>
+							<Image
+								maxH={'40px'}
+								src={thumbnail}
+								skeletonProps={{
+									width: '100%',
+									height: '40px'
+								}}
+							/>
+						</Box>
+					)}
+				/>
 				<ProjectDetailItems title="Platform" content={platForms.toString()} />
 				<ProjectDetailItems
 					title="Role"
