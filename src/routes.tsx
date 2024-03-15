@@ -37,7 +37,7 @@ const RootElement = () => {
 	const { pathname } = useLocation();
 	return (
 		<AppLayout>
-			<VStack spacing={24} sx={{ pt: 4, pb: 8, alignItems: 'flex-start' }}>
+			<VStack spacing={20} sx={{ pb: 8, alignItems: 'flex-start' }}>
 				<Navigation />
 				<AnimatePresence mode="wait">
 					{element && cloneElement(element, { key: pathname })}
