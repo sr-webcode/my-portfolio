@@ -5,6 +5,7 @@ import {
 	Heading,
 	Stack,
 	Text,
+	TextProps,
 	useBreakpointValue
 } from '@chakra-ui/react';
 
@@ -19,12 +20,17 @@ import PageTransition from '@/components/common/PageTransition';
 interface IProjectDetailItems {
 	title: string;
 	content: string;
+	contentProps?: TextProps;
 }
 
-const ProjectDetailItems = ({ title, content }: IProjectDetailItems) => (
+const ProjectDetailItems = ({
+	title,
+	content,
+	contentProps
+}: IProjectDetailItems) => (
 	<Stack>
 		<Heading size="sm">{title}</Heading>
-		<Text>{content}</Text>
+		<Text {...contentProps}>{content}</Text>
 	</Stack>
 );
 
@@ -35,12 +41,15 @@ const ProjectDetail = () => {
 
 	if (!project) return <Navigate to="/404" />;
 
-	const { id, name, platForms, role, contributions, url, assets } = project;
+	const { id, name, platForms, role, contributions, url, assets, tools } =
+		project;
 	const images: ReactImageGalleryItem[] =
 		assets?.screenshots.map((item) => ({
 			original: item,
 			thumbnail: item
 		})) ?? [];
+
+	const hasTools = tools && tools.length > 0;
 
 	return (
 		<PageTransition>
@@ -81,10 +90,19 @@ const ProjectDetail = () => {
 						title="Role"
 						content={role ?? 'Front-end Developer'}
 					/>
+
+					{hasTools && (
+						<ProjectDetailItems
+							title="Tools"
+							content={tools.map((tool) => tool.toLowerCase()).join(', ')}
+							contentProps={{ textTransform: 'capitalize' }}
+						/>
+					)}
 					<ProjectDetailItems
 						title="Project contributions"
 						content={contributions}
 					/>
+
 					<Button
 						as="a"
 						href={url}
